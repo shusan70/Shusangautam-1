@@ -1,151 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Shusan Gautam official website</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body id="page-top">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shusan Gautam | Portfolio</title>
 
-<!-- Navigation -->
-<nav class="navbar">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#0b0b0b;
+    color:white;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+nav .logo{
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#d4af37;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    background:linear-gradient(135deg,#111,#1f1f1f);
+}
+
+.hero img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #d4af37;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin:10px 0;
+}
+
+.hero p{
+    color:#bbb;
+    margin-bottom:20px;
+}
+
+/* SOCIAL */
+.social a{
+    color:white;
+    margin:0 10px;
+    font-size:14px;
+    text-decoration:none;
+}
+
+.social a:hover{
+    color:#d4af37;
+}
+
+/* BUTTONS */
+.buttons{
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    margin:10px;
+    padding:12px 22px;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    border-radius:30px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#d4af37;
+    color:black;
+}
+
+/* SECTION */
+section{
+    padding:80px 20px;
+    text-align:center;
+}
+
+section h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+section p{
+    color:#aaa;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:40px;
+    max-width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.card{
+    background:#1a1a1a;
+    padding:30px;
+    border-radius:15px;
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    background:#222;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+    border-top:1px solid #222;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
     <div class="logo">Shusan Gautam</div>
-
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="travel.html">Travel</a></li>
-        <li><a href="family.html">Family</a></li>
-        <li><a href="wedding.html">Wedding</a></li>
-    </ul>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
-<!-- Hero -->
-<header class="hero" id="home">
+<!-- HERO -->
+<section class="hero" id="home">
 
-    <img src="Shusan.jpg" class="profile-image" alt="Shusan Gautam">
+    <div>
+        <img src="Shusan.jpg" alt="Profile">
 
-    <h1>Hi, I'm Shusan Gautam</h1>
+        <h1>Shusan Gautam</h1>
+        <p>Travel • Family • Wedding Photography</p>
 
-    <h2>Web Developer • Content Creator • Traveller</h2>
+        <div class="social">
+            <a href="https://www.youtube.com/@sushangautam2056" target="_blank">YouTube</a>
+            <a href="https://github.com/gautamsuzzal21" target="_blank">GitHub</a>
+            <a href="https://www.facebook.com/Shusangautam21/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/shusangautam/" target="_blank">Instagram</a>
+        </div>
 
-    <p>
-        Welcome to my personal website where I share my portfolio,
-        travel adventures, family memories and wedding gallery.
-    </p>
-
-    <div class="buttons">
-        <a href="gallery.html" class="btn">Explore Gallery</a>
-        <a href="travel.html" class="btn btn-outline">Travel Photos</a>
+        <div class="buttons">
+            <a class="btn" href="#portfolio">View Portfolio</a>
+            <a class="btn" href="#contact">Contact</a>
+        </div>
     </div>
-
-    <div class="social">
-
-        <a href="https://www.youtube.com/@sushangautam2056">
-            <i class="fab fa-youtube"></i>
-        </a>
-
-        <a href="https://github.com/gautamsuzzal21">
-            <i class="fab fa-github"></i>
-        </a>
-
-        <a href="https://www.facebook.com/Shusangautam21/">
-            <i class="fab fa-facebook"></i>
-        </a>
-
-        <a href="https://www.instagram.com/shusangautam/">
-            <i class="fab fa-instagram"></i>
-        </a>
-
-    </div>
-
-</header>
-
-<!-- About -->
-
-<section class="about">
-
-<h2>About Me</h2>
-
-<p>
-
-Hello! I'm Shusan Gautam.
-
-I enjoy creating websites, producing YouTube content,
-travelling across Nepal and preserving precious family memories.
-
-This website serves as my digital home where I showcase my work,
-my journeys and life's special moments.
-
-</p>
 
 </section>
 
-<!-- Website Sections -->
+<!-- PORTFOLIO -->
+<section id="portfolio">
 
-<section class="cards">
+    <h2>My Work</h2>
+    <p>Explore my photography collections</p>
 
-<div class="card">
-<h3>Portfolio</h3>
-<p>Explore my projects and achievements.</p>
-</div>
+    <div class="cards">
 
-<div class="card">
-<h3>Travel Gallery</h3>
-<p>Beautiful places I've visited.</p>
-<a href="travel.html">View Gallery</a>
-</div>
+        <a class="card" href="travel.html">
+            <h3>🌍 Travel</h3>
+            <p>Adventure & landscapes</p>
+        </a>
 
-<div class="card">
-<h3>Family Gallery</h3>
-<p>Private family memories.</p>
-<a href="family.html">Open</a>
-</div>
+        <a class="card" href="family.html">
+            <h3>👨‍👩‍👧 Family</h3>
+            <p>Memories & emotions</p>
+        </a>
 
-<div class="card">
-<h3>Wedding Gallery</h3>
-<p>Our special day.</p>
-<a href="wedding.html">Open</a>
-</div>
+        <a class="card" href="wedding.html">
+            <h3>💍 Wedding</h3>
+            <p>Special celebrations</p>
+        </a>
+
+    </div>
 
 </section>
 
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Reach out through social media anytime</p>
+</section>
+
+<!-- FOOTER -->
 <footer>
-
-<h3>Connect with Me</h3>
-
-<div class="social">
-
-<a href="https://www.youtube.com/@sushangautam2056"><i class="fab fa-youtube"></i></a>
-
-<a href="https://github.com/gautamsuzzal21"><i class="fab fa-github"></i></a>
-
-<a href="https://www.facebook.com/Shusangautam21/"><i class="fab fa-facebook"></i></a>
-
-<a href="https://www.instagram.com/shusangautam/"><i class="fab fa-instagram"></i></a>
-
-</div>
-
-<p>© 2026 Shusan Gautam. All Rights Reserved.</p>
-
+    © 2026 Shusan Gautam • All Rights Reserved
 </footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/scripts.js"></script>
 
 </body>
 </html>
