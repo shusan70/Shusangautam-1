@@ -1,0 +1,139 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#0b0b0b;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* PARTICLES */
+#particles{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+
+/* HERO */
+.hero{
+    height:40vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:42px;
+    color:#d4af37;
+    animation:fadeIn 1s ease;
+}
+
+/* CONTAINER */
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+    padding:30px 0;
+}
+
+/* BACK BUTTON */
+.back-btn{
+    display:inline-block;
+    margin-bottom:25px;
+    padding:10px 18px;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    text-decoration:none;
+    border-radius:30px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#d4af37;
+    color:black;
+}
+
+/* GALLERY GRID */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    border-radius:15px;
+    cursor:pointer;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+    border-color:#d4af37;
+}
+
+/* LIGHTBOX */
+#lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.95);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+#lightbox img{
+    max-width:90vw;
+    max-height:85vh;
+    border-radius:12px;
+    animation:zoom 0.3s ease;
+}
+
+/* CONTROLS */
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:45px;
+    cursor:pointer;
+}
+
+.prev,
+.next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:50px;
+    cursor:pointer;
+    user-select:none;
+    padding:10px;
+}
+
+.prev{ left:20px; }
+.next{ right:20px; }
+
+/* ANIMATIONS */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes zoom{
+    from{transform:scale(0.9);}
+    to{transform:scale(1);}
+}

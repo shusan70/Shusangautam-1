@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Gallery | Shusan Gautam</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* FILTER BAR */
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 20px;
+    }
+
+    .filters button {
+      background: #1a1a1a;
+      color: #fff;
+      border: 1px solid #333;
+      padding: 10px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .filters button:hover {
+      background: #333;
+    }
+
+    /* ALBUMS */
+    .albums {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .album {
+      background: linear-gradient(145deg, #1a1a1a, #111);
+      padding: 25px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 15px;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .album:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255,255,255,0.1);
+    }
+
+    .album span {
+      display: block;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: none;
+      padding: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      margin: 10px 20px;
+      padding: 10px 15px;
+      background: #222;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 8px;
+      display: none;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .lightbox img {
+      max-width: 92%;
+      max-height: 80%;
+      border-radius: 12px;
+      animation: zoomIn 0.3s ease;
+    }
+
+    .controls {
+      margin-top: 15px;
+    }
+
+    .controls button {
+      padding: 10px 14px;
+      margin: 5px;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      background: #222;
+      color: #fff;
+      transition: 0.2s;
+    }
+
+    .controls button:hover {
+      background: #444;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes zoomIn {
+      from {transform: scale(0.8);}
+      to {transform: scale(1);}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>Wedding Gallery</header>
+
+<!-- FILTER BUTTONS -->
+<div class="filters">
+  <button onclick="openAlbum('mehandi')">Mehandi</button>
+  <button onclick="openAlbum('parlour')">Parlour</button>
+  <button onclick="openAlbum('reception')">Reception</button>
+  <button onclick="openAlbum('wedding')">Wedding Day</button>
+</div>
+
+<!-- BACK -->
+<button class="back-btn" id="backBtn" onclick="goBack()">⬅ Back to Albums</button>
+
+<!-- GALLERY -->
+<div class="gallery" id="gallery"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" tabindex="0">
+  <img id="lightboxImg" src="">
+  <div class="controls">
+    <button onclick="prevImg()">⬅ Prev</button>
+    <button onclick="closeLightbox()">Close</button>
+    <button onclick="nextImg()">Next ➡</button>
+  </div>
+</div>
+
+<script>
+const data = {
+  mehandi: generateArray("assets/images/Shusan_Akriti_weddings/mehandi/mehandi (", 42),
+  parlour: generateArray("assets/images/Shusan_Akriti_weddings/parlour_photos/parlour (", 14),
+  reception: generateArray("assets/images/Shusan_Akriti_weddings/reception_day/reception (", 37),
+  wedding: generateArray("assets/images/Shusan_Akriti_weddings/wedding_day/wedding (", 94)
+};
+
+let currentAlbum = [];
+let currentIndex = 0;
+
+function generateArray(path, count) {
+  let arr = [];
+  for (let i = 1; i <= count; i++) {
+    arr.push(path + i + ").JPG");
+  }
+  return arr;
+}
+
+function openAlbum(name) {
+  currentAlbum = data[name];
+
+  const gallery = document.getElementById("gallery");
+  gallery.style.display = "grid";
+  document.getElementById("backBtn").style.display = "block";
+
+  gallery.innerHTML = "";
+
+  currentAlbum.forEach((img, index) => {
+    let image = document.createElement("img");
+    image.src = img;
+    image.loading = "lazy";
+    image.onclick = () => openLightbox(index);
+    gallery.appendChild(image);
+  });
+}
+
+function goBack() {
+  document.getElementById("gallery").style.display = "none";
+  document.getElementById("backBtn").style.display = "none";
+}
+
+function openLightbox(index) {
+  currentIndex = index;
+  const box = document.getElementById("lightbox");
+  box.style.display = "flex";
+  document.getElementById("lightboxImg").src = currentAlbum[currentIndex];
+  box.focus();
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+function nextImg() {
+  currentIndex = (currentIndex + 1) % currentAlbum.length;
+  document.getElementById("lightboxImg").src = currentAlbum[currentIndex];
+}
+
+function prevImg() {
+  currentIndex = (currentIndex - 1 + currentAlbum.length) % currentAlbum.length;
+  document.getElementById("lightboxImg").src = currentAlbum[currentIndex];
+}
+
+/* KEYBOARD SUPPORT */
+document.addEventListener("keydown", (e) => {
+  const box = document.getElementById("lightbox");
+  if (box.style.display === "flex") {
+    if (e.key === "ArrowRight") nextImg();
+    if (e.key === "ArrowLeft") prevImg();
+    if (e.key === "Escape") closeLightbox();
+  }
+});
+</script>
+
+</body>
+</html>
